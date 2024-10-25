@@ -161,8 +161,17 @@ function resetColors() {
 
 window.onload = () => {
   animateShapes();
+  
+  // Hamburger Menu Toggle
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const fullPageMenu = document.getElementById('fullPageMenu');
+
+  hamburgerMenu.addEventListener('click', () => {
+      fullPageMenu.classList.toggle('show');
+  });
+
   document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
   document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
   document.getElementById('changeColorBtn').addEventListener('click', changeColors);
-  document.getElementById('resetColorBtn').addEventListener('click', resetColors);  // New event listener
+  document.getElementById('resetColorBtn').addEventListener('click', resetColors);
 };

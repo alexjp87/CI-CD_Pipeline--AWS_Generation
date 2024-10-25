@@ -2,7 +2,7 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 0.125em;
   height: 100vh;
   background-color: #1a1a1a;
@@ -14,7 +14,7 @@ body {
 
 #container {
   grid-column: 2 / 3;
-  grid-row: 2 / 4;
+  grid-row: 2 / 3;
   position: relative;
   width: 60vw;
   height: 80vh;
@@ -26,7 +26,7 @@ body {
 
 #overlay-container {
   grid-column: 2 / 3;
-  grid-row: 2 / 4;
+  grid-row: 2 / 3;
   width: 60vw;
   height: 80vh;
   display: flex;
@@ -80,7 +80,17 @@ body.light-mode {
 
 #toggleThemeBtn {
   grid-column: 1 / 2;
-  grid-row: 4 / 5;
+  grid-row: 3 / 4;
+}
+
+#changeColorBtn {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+#resetColorBtn {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
 }
 
 #toggleCollisionBtn:hover, #toggleThemeBtn:hover, #changeColorBtn:hover, #resetColorBtn:hover {
@@ -101,12 +111,3 @@ body.light-mode {
   border: solid 0.0625em #1a1a1a;
 }
 
-#changeColorBtn {
-  grid-column: 3 / 4;
-  grid-row: 2 / 3;
-}
-
-#resetColorBtn {
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-}

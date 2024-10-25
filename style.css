@@ -1,5 +1,59 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 28px;
 }
+
+#container {
+  position: relative;
+  width: 60vw;
+  height: 80vh;
+  background-color: #1a1a1a;
+  border: 2px solid #f1f1f1;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+}
+
+#toggleCollisionBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #2c2c2c;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#toggleCollisionBtn:hover {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+}
+
+#overlay-container {
+  position: absolute;
+  width: 60vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  color: #2c2c2c;
+  z-index: 5;
+}
+
+#overlay-container h2, #overlay-container p {
+  margin: 10px;
+}
+

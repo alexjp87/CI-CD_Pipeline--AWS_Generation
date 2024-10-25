@@ -1,4 +1,5 @@
 let collisionEnabled = true;
+let darkTheme = true;
 
 function createShape(container) {
     const shape = document.createElement('div');
@@ -67,10 +68,11 @@ function handleCollision(shape1, shape2) {
     shape2.velocityX = tempVx;
     shape2.velocityY = tempVy;
 
+    // Color change logic on collision
     const h2Elements = document.querySelectorAll('#overlay-container h2');
     const pElements = document.querySelectorAll('#overlay-container p');
 
-    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Generate random color
 
     h2Elements.forEach(h2 => h2.style.color = randomColor);
     pElements.forEach(p => p.style.color = randomColor);
@@ -109,7 +111,24 @@ function toggleCollisions() {
     btn.textContent = collisionEnabled ? 'Disable Collisions' : 'Enable Collisions';
 }
 
+function toggleTheme() {
+    darkTheme = !darkTheme;
+    const body = document.body;
+    const container = document.getElementById('container');
+    const shapes = document.querySelectorAll('.shape');
+    const toggleCollisionBtn = document.getElementById('toggleCollisionBtn');
+    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+
+    body.classList.toggle('light-mode');
+    container.classList.toggle('light-mode');
+    shapes.forEach(shape => shape.classList.toggle('light-mode'));
+    toggleCollisionBtn.classList.toggle('light-mode');
+    toggleThemeBtn.classList.toggle('light-mode');
+    toggleThemeBtn.textContent = darkTheme ? 'Light Mode' : 'Dark Mode';
+}
+
 window.onload = () => {
     animateShapes();
     document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
+    document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
 };

@@ -118,6 +118,8 @@ function toggleTheme() {
     const shapes = document.querySelectorAll('.shape');
     const toggleCollisionBtn = document.getElementById('toggleCollisionBtn');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+    const changeColorBtn = document.getElementById('changeColorBtn');
+    const resetColorBtn = document.getElementById('resetColorBtn');
 
     body.classList.toggle('light-mode');
     container.classList.toggle('light-mode');
@@ -125,10 +127,42 @@ function toggleTheme() {
     toggleCollisionBtn.classList.toggle('light-mode');
     toggleThemeBtn.classList.toggle('light-mode');
     toggleThemeBtn.textContent = darkTheme ? 'Light Mode' : 'Dark Mode';
+    changeColorBtn.classList.toggle('light-mode');
+    resetColorBtn.classList.toggle('light-mode');
+}
+
+function changeColors() {
+  const container = document.getElementById('container');
+  const shapes = document.querySelectorAll('.shape');
+  
+  const randomBorderColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  container.style.borderColor = randomBorderColor;
+
+  shapes.forEach(shape => {
+      const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      shape.style.backgroundColor = randomColor;
+  });
+}
+
+function resetColors() {
+  const container = document.getElementById('container');
+  const shapes = document.querySelectorAll('.shape');
+
+  if (darkTheme) {
+      // Dark mode reset
+      container.style.borderColor = '#f1f1f1';
+      shapes.forEach(shape => shape.style.backgroundColor = '#f1f1f1');
+  } else {
+      // Light mode reset
+      container.style.borderColor = '#1a1a1a';
+      shapes.forEach(shape => shape.style.backgroundColor = '#1a1a1a');
+  }
 }
 
 window.onload = () => {
-    animateShapes();
-    document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
-    document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
+  animateShapes();
+  document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
+  document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
+  document.getElementById('changeColorBtn').addEventListener('click', changeColors);
+  document.getElementById('resetColorBtn').addEventListener('click', resetColors);  // New event listener
 };

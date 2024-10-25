@@ -98,7 +98,6 @@ body.light-mode {
   border: solid 0.0625em #1a1a1a;
 }
 
-
 /* Hamburger Menu */
 .hamburger-menu {
   display: none;
@@ -115,6 +114,16 @@ body.light-mode {
   background-color: #f1f1f1;
   margin: 6px 0;
   transition: 0.4s;
+}
+
+/* Light Mode - hamburger */
+body.light-mode .hamburger-menu .bar {
+  background-color: #1a1a1a;
+}
+
+/* Dark Mode - bars darkened */
+.hamburger-menu.dark-mode .bar {
+  background-color: #1a1a1a;
 }
 
 /* Full Page Menu for Mobile */
@@ -145,6 +154,7 @@ body.light-mode {
   justify-content: flex-end;
   background-color: #1a1a1a;
   padding: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar a {
@@ -152,6 +162,26 @@ body.light-mode {
   text-decoration: none;
   font-size: 1em;
   margin: 0 1em;
+}
+
+/* Light Mode - navbar */
+body.light-mode .navbar {
+  background-color: #f1f1f1;
+  color: #1a1a1a;
+}
+
+body.light-mode .navbar a {
+  color: #1a1a1a;
+}
+
+/* Dark Mode - nav bar */
+.navbar.dark-mode {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+.navbar.dark-mode a {
+  color: #f1f1f1;
 }
 
 /* Media Queries */

@@ -79,99 +79,108 @@ function handleCollision(shape1, shape2) {
 }
 
 function animateShapes() {
-    const container = document.getElementById('container');
-    const shapes = [];
+  const container = document.getElementById('container');
+  const shapes = [];
 
-    for (let i = 0; i < 3; i++) {
-        shapes.push(createShape(container));
-    }
+  for (let i = 0; i < 3; i++) {
+      shapes.push(createShape(container));
+  }
 
-    function update() {
-        shapes.forEach((shape, index) => {
-            moveShape(shape, container);
+  function update() {
+      shapes.forEach((shape, index) => {
+          moveShape(shape, container);
 
-            if (collisionEnabled) {
-                for (let j = index + 1; j < shapes.length; j++) {
-                    if (detectCollision(shape, shapes[j])) {
-                        handleCollision(shape, shapes[j]);
-                    }
-                }
-            }
-        });
+          if (collisionEnabled) {
+              for (let j = index + 1; j < shapes.length; j++) {
+                  if (detectCollision(shape, shapes[j])) {
+                      handleCollision(shape, shapes[j]);
+                  }
+              }
+          }
+      });
 
-        requestAnimationFrame(update);
-    }
+      requestAnimationFrame(update);
+  }
 
-    update();
+  update();
 }
 
 function toggleCollisions() {
-    collisionEnabled = !collisionEnabled;
-    const btn = document.getElementById('toggleCollisionBtn');
-    btn.textContent = collisionEnabled ? 'Disable Collisions' : 'Enable Collisions';
+  collisionEnabled = !collisionEnabled;
+  const btn = document.getElementById('toggleCollisionBtn');
+  btn.textContent = collisionEnabled ? 'Disable Collisions' : 'Enable Collisions';
 }
 
 function toggleTheme() {
-    darkTheme = !darkTheme;
-    const body = document.body;
-    const container = document.getElementById('container');
-    const shapes = document.querySelectorAll('.shape');
-    const toggleCollisionBtn = document.getElementById('toggleCollisionBtn');
-    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
-    const changeColorBtn = document.getElementById('changeColorBtn');
-    const resetColorBtn = document.getElementById('resetColorBtn');
+  darkTheme = !darkTheme;
+  const body = document.body;
+  const container = document.getElementById('container');
+  const shapes = document.querySelectorAll('.shape');
+  const toggleCollisionBtn = document.getElementById('toggleCollisionBtn');
+  const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+  const changeColorBtn = document.getElementById('changeColorBtn');
+  const resetColorBtn = document.getElementById('resetColorBtn');
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const navbar = document.querySelector('.navbar'); // Added line for nav bar
 
-    body.classList.toggle('light-mode');
-    container.classList.toggle('light-mode');
-    shapes.forEach(shape => shape.classList.toggle('light-mode'));
-    toggleCollisionBtn.classList.toggle('light-mode');
-    toggleThemeBtn.classList.toggle('light-mode');
-    toggleThemeBtn.textContent = darkTheme ? 'Light Mode' : 'Dark Mode';
-    changeColorBtn.classList.toggle('light-mode');
-    resetColorBtn.classList.toggle('light-mode');
+  // Toggle between light mode and dark mode
+  body.classList.toggle('light-mode');
+  container.classList.toggle('light-mode');
+  shapes.forEach(shape => shape.classList.toggle('light-mode'));
+  toggleCollisionBtn.classList.toggle('light-mode');
+  toggleThemeBtn.classList.toggle('light-mode');
+  toggleThemeBtn.textContent = darkTheme ? 'Light Mode' : 'Dark Mode';
+  changeColorBtn.classList.toggle('light-mode');
+  resetColorBtn.classList.toggle('light-mode');
+
+  // Toggle dark mode for hamburger bars
+  hamburgerMenu.classList.toggle('dark-mode', !darkTheme);
+
+  // Toggle dark mode for navbar
+  navbar.classList.toggle('dark-mode', !darkTheme); // Added line for toggling dark mode on navbar
 }
 
 function changeColors() {
-  const container = document.getElementById('container');
-  const shapes = document.querySelectorAll('.shape');
-  
-  const randomBorderColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-  container.style.borderColor = randomBorderColor;
+const container = document.getElementById('container');
+const shapes = document.querySelectorAll('.shape');
 
-  shapes.forEach(shape => {
-      const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-      shape.style.backgroundColor = randomColor;
-  });
+const randomBorderColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+container.style.borderColor = randomBorderColor;
+
+shapes.forEach(shape => {
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    shape.style.backgroundColor = randomColor;
+});
 }
 
 function resetColors() {
-  const container = document.getElementById('container');
-  const shapes = document.querySelectorAll('.shape');
+const container = document.getElementById('container');
+const shapes = document.querySelectorAll('.shape');
 
-  if (darkTheme) {
-      // Dark mode reset
-      container.style.borderColor = '#f1f1f1';
-      shapes.forEach(shape => shape.style.backgroundColor = '#f1f1f1');
-  } else {
-      // Light mode reset
-      container.style.borderColor = '#1a1a1a';
-      shapes.forEach(shape => shape.style.backgroundColor = '#1a1a1a');
-  }
+if (darkTheme) {
+    // Dark mode reset
+    container.style.borderColor = '#f1f1f1';
+    shapes.forEach(shape => shape.style.backgroundColor = '#f1f1f1');
+} else {
+    // Light mode reset
+    container.style.borderColor = '#1a1a1a';
+    shapes.forEach(shape => shape.style.backgroundColor = '#1a1a1a');
+}
 }
 
 window.onload = () => {
-  animateShapes();
-  
-  // Hamburger Menu Toggle
-  const hamburgerMenu = document.getElementById('hamburgerMenu');
-  const fullPageMenu = document.getElementById('fullPageMenu');
+animateShapes();
 
-  hamburgerMenu.addEventListener('click', () => {
-      fullPageMenu.classList.toggle('show');
-  });
+// Hamburger Menu Toggle
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+const fullPageMenu = document.getElementById('fullPageMenu');
 
-  document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
-  document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
-  document.getElementById('changeColorBtn').addEventListener('click', changeColors);
-  document.getElementById('resetColorBtn').addEventListener('click', resetColors);
+hamburgerMenu.addEventListener('click', () => {
+    fullPageMenu.classList.toggle('show');
+});
+
+document.getElementById('toggleCollisionBtn').addEventListener('click', toggleCollisions);
+document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
+document.getElementById('changeColorBtn').addEventListener('click', changeColors);
+document.getElementById('resetColorBtn').addEventListener('click', resetColors);
 };

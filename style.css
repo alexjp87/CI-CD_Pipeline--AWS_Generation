@@ -44,6 +44,18 @@ body {
   margin: 0.25em;
 }
 
+/* Light Mode - for overlay text */
+body.light-mode #overlay-container h2,
+body.light-mode #overlay-container p {
+  color: #1a1a1a;
+}
+
+/* Dark Mode - for overlay text */
+#overlay-container.dark-mode h2,
+#overlay-container.dark-mode p {
+  color: #f1f1f1;
+}
+
 /* Shapes */
 .shape {
   position: absolute;

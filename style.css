@@ -3,6 +3,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  gap: 0.125em;
   height: 100vh;
   background-color: #1a1a1a;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -61,15 +62,21 @@ body.light-mode {
   background-color: #1a1a1a;
 }
 
+#toggleCollisionBtn, #toggleThemeBtn {
+  padding: 0.625em;
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+  border: solid 0.0625em #f1f1f1;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0.125em;
+  border-radius: 5%;
+}
+
+
 #toggleCollisionBtn {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  padding: 0.625em;
-  background-color: #f1f1f1;
-  color: black;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
 }
 
 #toggleCollisionBtn:hover, #toggleThemeBtn:hover {
@@ -81,17 +88,12 @@ body.light-mode {
 #toggleThemeBtn {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
-  padding: 0.625em;
-  background-color: #f1f1f1;
-  color: black;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
 }
 
 #toggleCollisionBtn.light-mode, #toggleThemeBtn.light-mode {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #f1f1f1;
+  color: #1a1a1a;
+  border: solid 0.0625em #1a1a1a;
 }
 
 #toggleCollisionBtn.light-mode:hover, #toggleThemeBtn.light-mode:hover {

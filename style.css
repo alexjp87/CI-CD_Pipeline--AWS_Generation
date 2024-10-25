@@ -17,7 +17,7 @@ body {
   grid-row: 2 / 3;
   position: relative;
   width: 60vw;
-  height: 80vh;
+  height: 70vh;
   background-color: #1a1a1a;
   border: 0.125em solid #f1f1f1;
   overflow: hidden;
@@ -28,7 +28,7 @@ body {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   width: 60vw;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -62,6 +62,14 @@ body.light-mode {
   background-color: #1a1a1a;
 }
 
+.btn-ctnr {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+}
+
 #toggleCollisionBtn, #toggleThemeBtn, #changeColorBtn, #resetColorBtn {
   padding: 0.625em;
   background-color: #1a1a1a;
@@ -71,6 +79,7 @@ body.light-mode {
   z-index: 10;
   margin: 0.125em;
   border-radius: 5%;
+  width: 20%;
 }
 
 #toggleCollisionBtn {
